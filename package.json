@@ -1,0 +1,26 @@
+{
+  "name": "parkdnd-development",
+  "version": "1.0.0",
+  "description": "turn your driveway into cash",
+  "main": "server.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest --coverage --forceExit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjain23/parkdnd.git"
+  },
+  "keywords": [
+    "parkdnd"
+  ],
+  "author": "Shrey Jain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sjain23/parkdnd/issues"
+  },
+  "homepage": "https://github.com/sjain23/parkdnd#readme",
+  "dependencies": {
+    "server": "^1.0.27"
+  }
+}
