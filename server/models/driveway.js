@@ -16,3 +16,6 @@ const drivewaySchema = mongoose.Schema({
     },
 
 });
+
+drivewaySchema.plugin(uniqueValidator);
+module.exports = mongoose.model("Driveway", drivewaySchema);

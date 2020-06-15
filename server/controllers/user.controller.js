@@ -23,12 +23,12 @@ module.exports.userGetAll = async (req, res) => {
 }
 
 //POST req
-module.exports.createUser = async (req, res) {
-    const path = req.body
-    const id = req.id
+module.exports.createUser = async (req, res) => {
+    const path = req.body;
+    const id = req.id;
     try {
         //finding the user using inbuilt method
-        const thisUser = await user.findById({ _id: id})
+        const thisUser = await user.findById({ _id: id});
         
         thisUser.name = path.name;
         thisUser.age = path.age;
