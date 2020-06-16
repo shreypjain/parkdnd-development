@@ -40,6 +40,7 @@ const userSchema = mongoose.Schema({
                 type: mongoose.Schema.ObjectId,
                 ref: 'Driveway'
             },
+            rate: Number,
             fullDrivewayRental: Boolean
         }
     ],
