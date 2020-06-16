@@ -39,7 +39,7 @@ module.exports.createUser = async (req, res) => {
         thisUser.profilePic = path.profilePic;
         thisUser.password = path.password;
 
-        const userDoc = await user.save();
+        const userDoc = await thisUser.save();
 
         return res.status(200).json({
             success: true,
@@ -73,6 +73,11 @@ module.exports.editUser = async (req, res) => {
         thisUser.password = path.password;
 
         const userDoc = await thisUser.save();
+
+        return res.status(200).json({
+            success:true,
+            message:'user has been edited'
+        });
     }
     catch (error) {
         return res.status(500).json({
@@ -99,6 +104,8 @@ module.exports.deleteUser = async (req,res) => {
         thisUser.dateJoined = "";
         thisUser.profilePic = "";
         thisUser.password = "";
+
+        const userDoc = await thisUser.save();
 
         return res.status(200).json({
             success: true,

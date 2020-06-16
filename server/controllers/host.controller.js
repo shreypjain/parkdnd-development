@@ -5,7 +5,7 @@ module.exports.getHost = async (req,res) => {
         const hosts = await host.find({});
         return res.status(200).json({
             success:true,
-            message:'user sucessfully found'
+            message: hosts
         });
     }
     catch (error) {
@@ -26,7 +26,10 @@ module.exports.createHost = async (req,res) => {
         thisHost.driveway = path.driveway;
 
         const hostDoc = await thisHost.save();
-
+        return res.status(200).json({
+            success:true,
+            message:'host successfully created'
+        });
     }
     catch (error) {
         return res,status(500),json({
@@ -71,6 +74,8 @@ module.exports.deleteHost = async (req, res) => {
 
         thisHost.liability = "";
         thisHost.driveway = "";
+
+        const hostDoc = await thisHost.save();
         return res.status(200).json({
             success: true,
             message: 'host successfully deleted'
