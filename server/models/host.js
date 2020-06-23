@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const uniqueValidator = require("uniqueValidator");
+const uniqueValidator = require("mongoose-unique-validator");
 
 const hostSchema = mongoose.Schema({
     liability : {
@@ -13,4 +13,4 @@ const hostSchema = mongoose.Schema({
 });
 
 hostSchema.plugin(uniqueValidator);
-module.exports("Host", hostSchema);
+module.exports = mongoose.model("Host", hostSchema);

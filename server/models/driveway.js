@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const uniqueValidator = require("uniqueValidator");
+const uniqueValidator = require("mongoose-unique-validator");
 
 const drivewaySchema = mongoose.Schema({
     address : {
@@ -12,7 +12,9 @@ const drivewaySchema = mongoose.Schema({
     }],
     parkingSpacesFull : {
         type: Number,
-        minamount: parkingSpaces 
+        minamount: {
+            type: Number
+        } 
     },
 
 });

@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser')
 const cors = require('cors');
 require('dotenv').config();
 
@@ -10,7 +11,7 @@ const route = require('./routes')
 const app = express();
 
 //get the database url
-const dbCredentials = process.env.dbCreds;
+const dbCredentials = "mongodb+srv://jainshreyp:Tubbywubbydrumchum1@cluster0-arfvp.mongodb.net/parkdnd?retryWrites=true&w=majority";
 
 //connect to the database
 mongoose.connect(dbCredentials, {useNewUrlParser : true,useUnifiedTopology : true})

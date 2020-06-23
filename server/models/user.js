@@ -34,7 +34,10 @@ const userSchema = mongoose.Schema({
     },
     rentals : [
         {
-            timeStart: Date.now(),
+            timeStart: {
+                type: Date,
+                default:Date.now()
+            },
             timeEnd: Date,
             parkedAddress: {
                 type: mongoose.Schema.ObjectId,

@@ -32,7 +32,7 @@ module.exports.createHost = async (req,res) => {
         });
     }
     catch (error) {
-        return res,status(500),json({
+        return res.status(500).json({
             success: false,
             message: "host could not be created",
             details: error.message
