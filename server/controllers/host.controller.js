@@ -18,7 +18,7 @@ module.exports.getHost = async (req,res) => {
 //POST req
 module.exports.createHost = async (req,res) => {
     const path = req.body;
-    const id = req.id;
+    const id = req.params.id;
     try {
         const thisHost = await host.findById({_id: id});
 
