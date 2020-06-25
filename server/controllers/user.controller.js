@@ -1,5 +1,4 @@
-//const express = require('express');
-//var router = express.Router();
+
 const user = require('../models/user');
 
 //GET req
@@ -25,10 +24,10 @@ module.exports.userGetAll = async (req, res) => {
 //POST req
 module.exports.createUser = async (req, res) => {
     const path = req.body;
-    const id = req.id;
+    const email = req.params.email;
     try {
         //finding the user using inbuilt method
-        const thisUser = await user.findById({ _id: id});
+        const thisUser = await user.findById({ 'email': email});
         
         thisUser.name = path.name;
         thisUser.age = path.age;
@@ -39,7 +38,7 @@ module.exports.createUser = async (req, res) => {
         thisUser.profilePic = path.profilePic;
         thisUser.password = path.password;
 
-        const userDoc = await thisUser.save();
+        const userDoc = await thisUser.create();
 
         return res.status(200).json({
             success: true,
@@ -57,11 +56,11 @@ module.exports.createUser = async (req, res) => {
 //PUT req
 module.exports.editUser = async (req, res) => {
     const path = req.body;
-    const id = req.params.id;
+    const email = req.params.email;
 
     try {
         //find user by the inbuilt method findById by mongo
-        const thisUser = await user.findById({_id: id});
+        const thisUser = await user.findById({'email': email});
 
         thisUser.name = path.name;
         thisUser.age = path.age;
@@ -90,11 +89,11 @@ module.exports.editUser = async (req, res) => {
 }
 //DELETE req
 module.exports.deleteUser = async (req,res) => {
-    const path = req.body;
-    const id = req.params._id
+    //const path = req.body;
+    const id = req.params.email
 
     try {
-        const thisUser = await user.findById({_id: id})
+        const thisUser = await user.findById({'email': email})
 
         thisUser.name = "";
         thisUser.age = "";

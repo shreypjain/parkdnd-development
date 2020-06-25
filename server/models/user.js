@@ -44,6 +44,7 @@ const userSchema = mongoose.Schema({
                 ref: 'Driveway'
             },
             rate: Number,
+            buyer: Boolean,
             fullDrivewayRental: Boolean
         }
     ],

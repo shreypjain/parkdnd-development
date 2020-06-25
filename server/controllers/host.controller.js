@@ -18,7 +18,7 @@ module.exports.getHost = async (req,res) => {
 //POST req
 module.exports.createHost = async (req,res) => {
     const path = req.body;
-    const id = req.params.id;
+    const id = req.userData.userId;
     try {
         const thisHost = await host.findById({_id: id});
 
@@ -36,19 +36,19 @@ module.exports.createHost = async (req,res) => {
             success: false,
             message: "host could not be created",
             details: error.message
-        })
+        });
     }
 }
 //PUT req
 module.exports.editHost = async (req,res) => {
-    const path = req.body;
-    const id = req.id;
+    const path = req.body
+    const id = req.id
 
     try {
         const thisHost = await host.findById({_id: id});
 
-        thisHost.liability = path.liability;
-        thisHost.driveway = path.driveway;
+        thisHost.liability = path.liability
+        thisHost.driveway = path.driveway
 
         const hostDoc = await thisHost.save();
         return res.status(200).json({
@@ -66,7 +66,7 @@ module.exports.editHost = async (req,res) => {
 }
 //DELETE req
 module.exports.deleteHost = async (req, res) => {
-    const path = req.body;
+    //const path = req.body;
     const id = req.id;
 
     try {
