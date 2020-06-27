@@ -19,10 +19,10 @@ module.exports.getDriveway = async (req,res) => {
 //POST req
 module.exports.createDriveway = async (req,res) => {
     const path = req.body;
-    const id = req.id;
+    const email = req.params.email;
     
     try {
-        const thisDriveway = await driveway.findById({_id: id});
+        const thisDriveway = await driveway.findOne({'email': email});
 
         thisDriveway.address = path.address;
         thisDriveway.parkingSpaces = path.parkingSpaces;
@@ -45,10 +45,10 @@ module.exports.createDriveway = async (req,res) => {
 //PUT req
 module.exports.editDriveway = async (req,res) => {
     const path = req.body;
-    const id = req.id;
+    const email = req.params.email;
 
     try {
-        const thisDriveway = await driveway.findById({_id: id});
+        const thisDriveway = await driveway.findOne({'email': email});
 
         thisDriveway.address = path.address;
         thisDriveway.parkingSpaces = path.parkingSpaces;
@@ -71,10 +71,10 @@ module.exports.editDriveway = async (req,res) => {
 //DELETE req
 module.exports.deleteDriveway = async (req,res) => {
     const path = req.body;
-    const id = req.id;
+    const email = req.params.email;
 
     try {
-        const thisDriveway = await driveway.findById({_id: id});
+        const thisDriveway = await driveway.findOneAndDelete({'email': email});
 
         thisDriveway.address = "";
         thisDriveway.parkingSpaces="";

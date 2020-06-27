@@ -20,9 +20,9 @@ module.exports.getRentalInfo = async (req, res) => {
 //POST req
 module.exports.createRental = async (req,res) => {
     const path = req.body;
-    const id = req.id;
+    const email = req.params.email;
     try {
-        const users = await user.findById({_id: id});
+        const users = await user.findOne({'email': email});
 
         users.rentals.timeStart = path.timeStart;
         users.rentals.timeEnd = path.timeEnd;

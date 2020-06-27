@@ -18,10 +18,10 @@ module.exports.getHost = async (req,res) => {
 //POST req
 module.exports.createHost = async (req,res) => {
     const path = req.body;
-    const id = req.userData.userId;
+    const email = req.params.email;
     try {
-        const thisHost = await host.findById({_id: id});
-
+        const thisHost = await host.findOne({'email': email});
+        console.log(thisHost)
         thisHost.liability = path.liability;
         thisHost.driveway = path.driveway;
 
@@ -35,17 +35,17 @@ module.exports.createHost = async (req,res) => {
         return res.status(500).json({
             success: false,
             message: "host could not be created",
-            details: error.message
+            details: error.message,
         });
     }
 }
 //PUT req
 module.exports.editHost = async (req,res) => {
     const path = req.body
-    const id = req.id
+    const email = req.params.email
 
     try {
-        const thisHost = await host.findById({_id: id});
+        const thisHost = await host.findOne({'email': email});
 
         thisHost.liability = path.liability
         thisHost.driveway = path.driveway
@@ -67,15 +67,10 @@ module.exports.editHost = async (req,res) => {
 //DELETE req
 module.exports.deleteHost = async (req, res) => {
     //const path = req.body;
-    const id = req.id;
+    const email = req.params.email;
 
     try {
-        const thisHost = await host.findById({_id: id});
-
-        thisHost.liability = "";
-        thisHost.driveway = "";
-
-        const hostDoc = await thisHost.save();
+        const thisHost = await host.findOneAndDelete({'email': email});
         return res.status(200).json({
             success: true,
             message: 'host successfully deleted'
