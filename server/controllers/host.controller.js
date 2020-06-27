@@ -1,4 +1,5 @@
 const host = require('../models/host');
+
 //GET req
 module.exports.getHost = async (req,res) => {
     try {
@@ -18,10 +19,11 @@ module.exports.getHost = async (req,res) => {
 //POST req
 module.exports.createHost = async (req,res) => {
     const path = req.body;
-    const email = req.params.email;
+    const email = req.query.email;
     try {
-        const thisHost = await host.findOne({'email': email});
-        console.log(thisHost)
+        const thisHost = await host.findOne({'email': email})
+        console.log(path)
+        console.log(email)
         thisHost.liability = path.liability;
         thisHost.driveway = path.driveway;
 
@@ -42,7 +44,7 @@ module.exports.createHost = async (req,res) => {
 //PUT req
 module.exports.editHost = async (req,res) => {
     const path = req.body
-    const email = req.params.email
+    const email = req.query.email
 
     try {
         const thisHost = await host.findOne({'email': email});
@@ -67,7 +69,7 @@ module.exports.editHost = async (req,res) => {
 //DELETE req
 module.exports.deleteHost = async (req, res) => {
     //const path = req.body;
-    const email = req.params.email;
+    const email = req.query.email;
 
     try {
         const thisHost = await host.findOneAndDelete({'email': email});

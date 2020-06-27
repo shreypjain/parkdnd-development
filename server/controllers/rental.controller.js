@@ -20,7 +20,7 @@ module.exports.getRentalInfo = async (req, res) => {
 //POST req
 module.exports.createRental = async (req,res) => {
     const path = req.body;
-    const email = req.params.email;
+    const email = req.query.email;
     try {
         const users = await user.findOne({'email': email});
 
