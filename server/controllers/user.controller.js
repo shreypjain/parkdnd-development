@@ -28,6 +28,7 @@ module.exports.createUser = async (req, res) => {
     try {
         //finding the user using inbuilt method
         const thisUser = await user.findOne({ 'email': email});
+        console.log(thisUser)
         
         thisUser.name = path.name;
         thisUser.age = path.age;
