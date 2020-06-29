@@ -7,9 +7,9 @@ const hostSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
-    driveway : {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Driveway'
+    email : {
+        type: String,
+        required: true
     }
 });
 

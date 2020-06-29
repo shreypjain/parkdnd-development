@@ -12,9 +12,7 @@ const drivewaySchema = mongoose.Schema({
     }],
     parkingSpacesFull : {
         type: Number,
-        minamount: {
-            type: Number
-        } 
+        required: true
     },
 
 });
