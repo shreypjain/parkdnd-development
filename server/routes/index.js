@@ -20,6 +20,9 @@ router
 router
     .route("/user")
     .delete(userControl.deleteUser);
+router
+    .route("/login")
+    .post(userControl.userLogin);
 
 //host routes
 router

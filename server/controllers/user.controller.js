@@ -1,4 +1,4 @@
-
+const bcrypt = require("bcrypt")
 const user = require('../models/user');
 
 //GET req
@@ -20,6 +20,24 @@ module.exports.userGetAll = async (req, res) => {
         });
     }
 }
+module.exports.userLogin = async (req,res) => {
+    const path = req.body;
+    const email = req.query.email
+
+    const thisUser = await user.findOne({'email': email})
+    if (bcrypt.compareSync(path.password, thisUser.password)) {
+        return res.status(200).json({
+            success: true,
+            message: 'user is good to login'
+        }); 
+    } else {
+        return res.status(500).json({
+            success: false,
+            message: 'passwords dont match'
+        })
+    }
+}
+
 
 //POST req
 module.exports.createUser = async (req, res) => {
@@ -27,20 +45,18 @@ module.exports.createUser = async (req, res) => {
     const email = req.query.email;
     try {
         //finding the user using inbuilt method
-        const thisUser = await user.findOne({ 'email': email});
-        console.log(thisUser)
-        
-        thisUser.name = path.name;
-        thisUser.age = path.age;
-        thisUser.isHost = path.isHost;
-        thisUser.email = path.email;
-        thisUser.phoneNumber = path.phoneNumber;
-        thisUser.dateJoined = path.dateJoined;
-        thisUser.profilePic = path.profilePic;
-        thisUser.password = path.password;
-
-        const userDoc = await thisUser.create();
-
+        const hash = bcrypt.hashSync(path.password, 10);
+        const thisUser = new user({
+            name : path.name,
+            age : path.age,
+            isHost : path.isHost,
+            email : path.email,
+            phoneNumber : path.phoneNumber,
+            dateJoined : path.dateJoined,
+            profilePic : path.profilePic,
+            password : hash
+        });
+        const result = thisUser.save()
         return res.status(200).json({
             success: true,
             message: 'created the user'
