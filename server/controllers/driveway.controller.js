@@ -16,6 +16,18 @@ module.exports.getDriveway = async (req,res) => {
         });
     }
 }
+//GET single driveway
+module.exports.getSingleDriveway = async (req,res) => {
+    email = req.query.email
+    try {
+        const thisDriveway = await driveway.findOne({'email': email})
+
+        return res.status(200).json({
+            sucess: true,
+            message: thisDriveway
+        })
+    }
+}
 //POST req
 module.exports.createDriveway = async (req,res) => {
     const path = req.body;

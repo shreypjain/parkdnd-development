@@ -51,6 +51,9 @@ router
 router
     .route("/driveway")
     .put(drivewayControl.deleteDriveway);
+router
+    .route('/driveway/single')
+    .get(drivewayControl.getSingleDriveway)
 
 //rental routes
 router

@@ -11,10 +11,6 @@ const userSchema = mongoose.Schema({
         type: Number,
         default: 0,
     },
-    isHost : {
-        type: mongoose.Schema.ObjectId,
-        ref: "Host"
-    },
     email : {
         type: String,
         default: "",

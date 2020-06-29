@@ -1,4 +1,5 @@
 const host = require('../models/host');
+const user = require('../models/user')
 
 //GET req
 module.exports.getHost = async (req,res) => {
@@ -21,17 +22,17 @@ module.exports.createHost = async (req,res) => {
     const path = req.body;
     const email = req.query.email;
     try {
-        const thisHost = await host.findOne({'email': email})
-        console.log(path)
-        console.log(email)
-        thisHost.liability = path.liability;
-        thisHost.driveway = path.driveway;
-
-        const hostDoc = await thisHost.save();
-        return res.status(200).json({
-            success:true,
-            message:'host successfully created'
-        });
+        if(user.exists({'email': email})) {
+            const thisHost = new host({
+                liability : path.liability,
+                email : path.email
+            })
+            const hostDoc = await thisHost.save();
+            return res.status(200).json({
+                success:true,
+                message:'host successfully created'
+            });
+        } 
     }
     catch (error) {
         return res.status(500).json({

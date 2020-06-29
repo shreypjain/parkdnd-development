@@ -41,6 +41,5 @@ module.exports.createRental = async (req,res) => {
             success:false,
             message: 'rental could not successfully be created or deleted'
         });
-
     }
 }
