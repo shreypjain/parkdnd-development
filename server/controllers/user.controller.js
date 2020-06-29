@@ -25,6 +25,7 @@ module.exports.userLogin = async (req,res) => {
     const email = req.query.email
 
     const thisUser = await user.findOne({'email': email})
+    if (!(thisUser == undefined)) {
     if (bcrypt.compareSync(path.password, thisUser.password)) {
         return res.status(200).json({
             success: true,
@@ -36,6 +37,7 @@ module.exports.userLogin = async (req,res) => {
             message: 'passwords dont match'
         })
     }
+}
 }
 
 
