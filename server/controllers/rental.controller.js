@@ -25,7 +25,6 @@ module.exports.createRental = async (req,res) => {
     try {
         const users = await user.findOne({'email': email});
 
-        console.log(users.rentals)
         users.rentals.timeStart = path.timeStart;
         users.rentals.timeEnd = path.timeEnd;
         users.rentals.drivewayOwnerEmail = path.drivewayOwnerEmail;
