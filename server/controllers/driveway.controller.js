@@ -26,6 +26,11 @@ module.exports.getSingleDriveway = async (req,res) => {
             sucess: true,
             message: thisDriveway
         })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        })
     }
 }
 //POST req

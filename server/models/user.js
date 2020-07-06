@@ -28,22 +28,18 @@ const userSchema = mongoose.Schema({
         type: String,
         default: ""
     },
-    rentals : [
+    rentals : 
         {
             timeStart: {
-                type: Date,
+                type: String,
                 default:Date.now()
             },
-            timeEnd: Date,
-            parkedAddress: {
-                type: mongoose.Schema.ObjectId,
-                ref: 'Driveway'
-            },
+            timeEnd: String,
+            drivewayOwnerEmail: String,
             rate: Number,
             buyer: Boolean,
             fullDrivewayRental: Boolean
-        }
-    ],
+        },
     password : {
         type: String,
         trim: true,
