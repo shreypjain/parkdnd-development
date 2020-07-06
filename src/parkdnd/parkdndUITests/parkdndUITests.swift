@@ -1,14 +1,14 @@
 //
-//  parkdndUITests.swift
-//  parkdndUITests
+//  ParkDNDUITests.swift
+//  ParkDNDUITests
 //
-//  Created by Shrey Jain on 6/22/20.
+//  Created by Shrey Jain on 7/6/20.
 //  Copyright © 2020 Shrey Jain. All rights reserved.
 //
 
 import XCTest
 
-class parkdndUITests: XCTestCase {
+class ParkDNDUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

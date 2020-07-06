@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  parkdnd
+//  ParkDND
 //
-//  Created by Shrey Jain on 6/22/20.
+//  Created by Shrey Jain on 7/6/20.
 //  Copyright © 2020 Shrey Jain. All rights reserved.
 //
 
