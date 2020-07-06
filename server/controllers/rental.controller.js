@@ -25,15 +25,16 @@ module.exports.createRental = async (req,res) => {
     try {
         const users = await user.findOne({'email': email});
 
+        console.log(users.rentals)
         users.rentals.timeStart = path.timeStart;
         users.rentals.timeEnd = path.timeEnd;
-        user.rentals.drivewayOwnerEmail = path.drivewayOwnerEmail;
+        users.rentals.drivewayOwnerEmail = path.drivewayOwnerEmail;
         users.rentals.rate = path.rate;
         users.rentals.buyer = path.buyer
         users.rentals.fullDrivewayRental = path.fullDrivewayRental;
 
         const rentDoc = await users.save();
-        return res.status(200).status({
+        return res.status(200).json({
             succes:true,
             message:"this rental was successfully created"
         });

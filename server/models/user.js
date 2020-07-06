@@ -34,11 +34,26 @@ const userSchema = mongoose.Schema({
                 type: String,
                 default:Date.now()
             },
-            timeEnd: String,
-            drivewayOwnerEmail: String,
-            rate: Number,
-            buyer: Boolean,
-            fullDrivewayRental: Boolean
+            timeEnd: {
+                type: String,
+                default: ""
+            },
+            drivewayOwnerEmail: {
+                type:String,
+                default:""
+            },
+            rate: {
+                type:Number,
+                default: 0
+            },
+            buyer: {
+                type: Boolean,
+                default: true
+            },
+            fullDrivewayRental: {
+                type: Boolean,
+                default: false
+            }
         },
     password : {
         type: String,
