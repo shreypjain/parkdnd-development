@@ -40,11 +40,10 @@ module.exports.userLogin = async (req,res) => {
 }
 }
 
-
 //POST req
 module.exports.createUser = async (req, res) => {
     const path = req.body;
-    const email = req.query.email;
+    //const email = req.query.email;
     try {
         //finding the user using inbuilt method
         const hash = bcrypt.hashSync(path.password, 10);
