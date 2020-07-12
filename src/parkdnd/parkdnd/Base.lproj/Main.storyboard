@@ -89,6 +89,9 @@
                                 <rect key="frame" x="185" y="504" width="38" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <segue destination="lEl-Cp-R8y" kind="presentation" modalPresentationStyle="fullScreen" id="Mwp-vz-0NR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -100,22 +103,13 @@
             </objects>
             <point key="canvasLocation" x="1195.6521739130435" y="531.69642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="Cpi-My-dsy">
             <objects>
-                <viewController id="lEl-Cp-R8y" sceneMemberID="viewController">
+                <viewController id="lEl-Cp-R8y" customClass="GMapViewController" customModule="ParkDND" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mLW-ah-8rk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quick test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3d9-BU-ewz">
-                                <rect key="frame" x="158" y="375" width="78" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="cOq-Aj-25b"/>
                     </view>
