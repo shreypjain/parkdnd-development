@@ -107,37 +107,57 @@
         <scene sceneID="Cpi-My-dsy">
             <objects>
                 <viewController id="lEl-Cp-R8y" customClass="GMapViewController" customModule="ParkDND" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mLW-ah-8rk">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="mLW-ah-8rk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Where are you going?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xyD-av-n15">
-                                <rect key="frame" x="6" y="64" width="350" height="34"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Y0W-hQ-cpk">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Y0W-hQ-cpk" secondAttribute="height" multiplier="138:257" id="Q09-6d-tdc"/>
+                                    <constraint firstAttribute="width" constant="414" id="aOO-YY-nfL"/>
+                                    <constraint firstAttribute="height" constant="896" id="afU-Nf-4sw"/>
+                                </constraints>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9l5-ct-1Bl">
+                                <rect key="frame" x="0.0" y="56" width="50" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="person.fill" catalog="system"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Where would you like to go?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G27-D7-7ov">
+                                <rect key="frame" x="49" y="57" width="322" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DQ7-iZ-MbP">
-                                <rect key="frame" x="364" y="65" width="50" height="38"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALl-pP-ZhP">
-                                <rect key="frame" x="15" y="24" width="65" height="34"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <state key="normal" title="Log Out">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWr-41-XZq">
-                                <rect key="frame" x="355" y="19" width="59" height="37"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <state key="normal" title="Profile" image="person.circle" catalog="system"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61x-XW-n5Q">
+                                <rect key="frame" x="370" y="55" width="35" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="magnifyingglass" catalog="system"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Y0W-hQ-cpk" firstAttribute="trailing" secondItem="cOq-Aj-25b" secondAttribute="trailing" id="2L9-GW-pyg"/>
+                            <constraint firstItem="cOq-Aj-25b" firstAttribute="trailing" secondItem="Y0W-hQ-cpk" secondAttribute="trailing" id="3SX-m4-lki"/>
+                            <constraint firstItem="Y0W-hQ-cpk" firstAttribute="top" secondItem="cOq-Aj-25b" secondAttribute="top" constant="47" id="AEV-Ue-Qjq"/>
+                            <constraint firstItem="Y0W-hQ-cpk" firstAttribute="top" secondItem="cOq-Aj-25b" secondAttribute="top" id="BQz-H8-zqR"/>
+                            <constraint firstAttribute="bottom" secondItem="Y0W-hQ-cpk" secondAttribute="bottom" id="DGI-Om-4xo"/>
+                            <constraint firstItem="Y0W-hQ-cpk" firstAttribute="top" secondItem="mLW-ah-8rk" secondAttribute="top" id="dc7-aM-W8e"/>
+                            <constraint firstItem="Y0W-hQ-cpk" firstAttribute="top" secondItem="cOq-Aj-25b" secondAttribute="top" id="dgY-Cb-WL6"/>
+                            <constraint firstItem="cOq-Aj-25b" firstAttribute="bottom" secondItem="Y0W-hQ-cpk" secondAttribute="bottom" id="fIW-gD-wxr"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Y0W-hQ-cpk" secondAttribute="bottom" id="gNu-9S-P68"/>
+                            <constraint firstItem="Y0W-hQ-cpk" firstAttribute="leading" secondItem="cOq-Aj-25b" secondAttribute="leading" id="haQ-Sz-5ze"/>
+                            <constraint firstItem="Y0W-hQ-cpk" firstAttribute="leading" secondItem="cOq-Aj-25b" secondAttribute="leading" id="lhg-Io-ydG"/>
+                            <constraint firstItem="Y0W-hQ-cpk" firstAttribute="trailing" secondItem="cOq-Aj-25b" secondAttribute="trailing" id="pzM-ys-vCN"/>
+                            <constraint firstItem="Y0W-hQ-cpk" firstAttribute="leading" secondItem="cOq-Aj-25b" secondAttribute="leading" id="yNc-re-TG2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cOq-Aj-25b"/>
                     </view>
                     <navigationItem key="navigationItem" id="l25-YF-ZwQ"/>
+                    <connections>
+                        <outlet property="mapView" destination="Y0W-hQ-cpk" id="LGs-CT-W2C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VdV-UJ-W8e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -225,7 +245,7 @@
     <resources>
         <image name="logo.png" width="465" height="332"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
-        <image name="person.circle" catalog="system" width="64" height="60"/>
+        <image name="person.fill" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Vvk-KB-Vbu"/>

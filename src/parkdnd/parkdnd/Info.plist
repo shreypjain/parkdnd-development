@@ -16,7 +16,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>let me get this location boy, so i can where ur at</string>
+	<string>We need your location to track and hunt you down!</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>

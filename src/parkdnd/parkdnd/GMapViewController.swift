@@ -7,29 +7,73 @@
 //
 
 import UIKit
-import GoogleMaps
+import MapKit
+import CoreLocation
 
 class GMapViewController: UIViewController {
     let KEY = "AIzaSyDFeL1SysM-kXcgsF4BIpgsE4fIbGvnrUQ"
-
+    
+    let locationManager = CLLocationManager()
+    
+    
+    @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        GMSServices.provideAPIKey(KEY)
         // Do any additional setup after loading the view.
-        // Create a GMSCameraPosition that tells the map to display the
-        let camera = GMSCameraPosition.camera(withLatitude: 40.456420, longitude: -74.493510, zoom: 15.0)
-        let mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
-        self.view.addSubview(mapView)
-
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 40.456420, longitude: -74.493510)
-        marker.title = "North Brunswick"
-        marker.snippet = "New Jersey"
-        marker.map = mapView
+        checkLocationServices()
 
     }
-
+    func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse:
+            mapView.showsUserLocation = true
+            centerViewOnUserLocation()
+            locationManager.startUpdatingLocation()
+            break
+        case .denied:
+            // show alert for doing permission again
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            // SHow an alert that it could be restricted
+            break
+        case .authorizedAlways:
+            break
+        }
+    }
+    func centerViewOnUserLocation() {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    func checkLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
+            // the user has setup location so they are good to go
+            setupLocationManager()
+            checkLocationAuthorization()
+        } else {
+            //Show user how to turn this on
+        }
+    }
 
 }
 
+extension GMapViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion.init(center: center, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        mapView.setRegion(region, animated: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAuthorization()
+    }
+    
+}
