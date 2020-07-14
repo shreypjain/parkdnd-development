@@ -10,18 +10,65 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class GMapViewController: UIViewController {
-    let KEY = "AIzaSyDFeL1SysM-kXcgsF4BIpgsE4fIbGvnrUQ"
+class GMapViewController: UIViewController, UISearchBarDelegate {
     
     let locationManager = CLLocationManager()
     
     
+    @IBAction func searchButton(_ sender: Any) {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        present(searchController, animated: true, completion: nil)
+    }
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         checkLocationServices()
 
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //Ignoring user
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
+        //Activity Indicator
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = UIActivityIndicatorView.Style.medium
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        
+        self.view.addSubview(activityIndicator)
+        
+        //Hide search bar
+        searchBar.resignFirstResponder()
+        dismiss(animated: true, completion: nil)
+        
+        //Create the search fill ins
+        let searchRequest = MKLocalSearch.Request()
+        searchRequest.naturalLanguageQuery = searchBar.text
+        
+        let activeSearch = MKLocalSearch(request: searchRequest)
+        
+        activeSearch.start { (response,error) in
+            if response == nil {
+                print(error ?? "error")
+            } else {
+                //Remove annotations
+                let annotations = self.mapView.annotations
+                self.mapView.removeAnnotations(annotations)
+                
+                let latitude = response?.boundingRegion.center.latitude
+                let longitude = response?.boundingRegion.center.longitude
+                
+                //Create annotation
+                let annotation = MKPointAnnotation()
+                annotation.title = searchBar.text
+                annotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
+                self.mapView.addAnnotation(annotation)
+                
+            }
+        }
     }
     func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
@@ -39,6 +86,8 @@ class GMapViewController: UIViewController {
             // SHow an alert that it could be restricted
             break
         case .authorizedAlways:
+            break
+        @unknown default:
             break
         }
     }
@@ -77,3 +126,4 @@ extension GMapViewController: CLLocationManagerDelegate {
     }
     
 }
+

@@ -90,7 +90,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <segue destination="lEl-Cp-R8y" kind="presentation" modalPresentationStyle="fullScreen" id="Mwp-vz-0NR"/>
+                                    <segue destination="XIM-pV-nzG" kind="presentation" modalPresentationStyle="fullScreen" id="Mwp-vz-0NR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -118,22 +118,14 @@
                                     <constraint firstAttribute="width" constant="414" id="aOO-YY-nfL"/>
                                     <constraint firstAttribute="height" constant="896" id="afU-Nf-4sw"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="lEl-Cp-R8y" id="tnm-sH-bji"/>
+                                </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9l5-ct-1Bl">
-                                <rect key="frame" x="0.0" y="56" width="50" height="35"/>
+                                <rect key="frame" x="364" y="88" width="50" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="person.fill" catalog="system"/>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Where would you like to go?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G27-D7-7ov">
-                                <rect key="frame" x="49" y="57" width="322" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61x-XW-n5Q">
-                                <rect key="frame" x="370" y="55" width="35" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="magnifyingglass" catalog="system"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -154,14 +146,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cOq-Aj-25b"/>
                     </view>
-                    <navigationItem key="navigationItem" id="l25-YF-ZwQ"/>
+                    <navigationItem key="navigationItem" id="l25-YF-ZwQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="Dbd-6x-hZA">
+                            <connections>
+                                <action selector="searchButton:" destination="lEl-Cp-R8y" id="DO7-5N-GEV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="Y0W-hQ-cpk" id="LGs-CT-W2C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VdV-UJ-W8e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2169.5652173913045" y="186.83035714285714"/>
+            <point key="canvasLocation" x="3079.7101449275365" y="186.83035714285714"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="9zg-m4-A6w">
@@ -241,10 +239,27 @@
             </objects>
             <point key="canvasLocation" x="1195.6521739130435" y="-162.05357142857142"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IsO-JA-Voh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XIM-pV-nzG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Icq-Cn-SaC">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lEl-Cp-R8y" kind="relationship" relationship="rootViewController" id="Yyb-uO-lbO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zHt-lN-ylK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2169.5652173913045" y="186.83035714285714"/>
+        </scene>
     </scenes>
     <resources>
         <image name="logo.png" width="465" height="332"/>
-        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
