@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 
 const drivewaySchema = mongoose.Schema({
+    email : {
+        type: String,
+    },
     address : {
         type: String,
         default: "",

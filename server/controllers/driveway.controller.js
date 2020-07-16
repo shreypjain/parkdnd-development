@@ -1,4 +1,5 @@
 const driveway = require('../models/driveway');
+const user = require('../models/user')
 
 //GET req
 module.exports.getDriveway = async (req,res) => {
@@ -39,23 +40,27 @@ module.exports.createDriveway = async (req,res) => {
     const email = req.query.email;
     
     try {
-        const thisDriveway = await driveway.findOne({'email': email});
-
-        thisDriveway.address = path.address;
-        thisDriveway.parkingSpaces = path.parkingSpaces;
-        thisDriveway.parkingSpacesFull = path.parkingSpacesFull;
-
-        const driveDoc = await driveway.save();
+        const thisUser = await user.findOne({'email': email});
+        if(!(thisUser == undefined)) {
+        const thisDriveway = new driveway({
+            email: email,
+            address: path.address,
+            parkingSpaces: path.parkingSpaces,
+            parkingSpacesFull: path.parkingSpacesFull
+        });
+        const driveDoc = await thisDriveway.save();
 
         res.status(200).json({
             success:true,
             message:'new driveway created'
         });
+        }
     }
     catch (error) {
         res.status(500).json({
             success:false,
-            message:'driveway was not created properly'
+            message:'driveway was not created properly',
+            details: error.message
         });
     }
 }
