@@ -11,7 +11,7 @@ const route = require('./routes')
 const app = express();
 
 //get the database url
-const dbCredentials = "mongodb+srv://jainshreyp:Tubbywubbydrumchum1@cluster0-arfvp.mongodb.net/parkdnd?retryWrites=true&w=majority";
+const dbCredentials = "";
 
 //connect to the database
 mongoose.connect(dbCredentials, {useNewUrlParser : true,useUnifiedTopology : true})
