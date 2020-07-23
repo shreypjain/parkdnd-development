@@ -24,12 +24,13 @@ module.exports.userLogin = async (req,res) => {
     const path = req.body;
     const email = req.query.email
 
-    const thisUser = await user.findOne({'email': email})
+    const thisUser = await user.findOne({_id: id})
     if (!(thisUser == undefined)) {
     if (bcrypt.compareSync(path.password, thisUser.password)) {
         return res.status(200).json({
             success: true,
-            message: 'user is good to login'
+            message: 'user is good to login',
+            userId: id
         }); 
     } else {
         return res.status(500).json({
@@ -49,6 +50,7 @@ module.exports.createUser = async (req, res) => {
         const hash = bcrypt.hashSync(path.password, 10);
         const thisUser = new user({
             name : path.name,
+            username: path.username,
             age : path.age,
             isHost : path.isHost,
             email : path.email,
@@ -60,7 +62,8 @@ module.exports.createUser = async (req, res) => {
         const result = thisUser.save()
         return res.status(200).json({
             success: true,
-            message: 'created the user'
+            message: 'created the user',
+            userID: id
         }); 
     }
     catch (error) {
@@ -78,9 +81,10 @@ module.exports.editUser = async (req, res) => {
 
     try {
         //find user by the inbuilt method findById by mongo
-        const thisUser = await user.findOne({'email': email});
+        const thisUser = await user.findOne({_id: id});
 
         thisUser.name = path.name;
+        thisUser.username = path.username;
         thisUser.age = path.age;
         thisUser.isHost = path.isHost;
         thisUser.email = path.email;
@@ -111,7 +115,7 @@ module.exports.deleteUser = async (req,res) => {
     const email = req.query.email
 
     try {
-        const thisUser = await user.findOneAndDelete({'email': email})
+        const thisUser = await user.findOneAndDelete({_id: id})
 
         /*thisUser.name = "";
         thisUser.age = "";

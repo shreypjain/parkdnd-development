@@ -4,7 +4,7 @@ const user = require('../models/user');
 module.exports.getRentalInfo = async (req, res) => {
     email = req.query.email
     try {
-        const users = await user.findOne({'email': email});
+        const users = await user.findOne({_id: id});
         return res.status(200).json({
             success:true,
             message:users.rentals
@@ -23,7 +23,7 @@ module.exports.createRental = async (req,res) => {
     const path = req.body;
     const email = req.query.email;
     try {
-        const users = await user.findOne({'email': email});
+        const users = await user.findOne({_id: id});
 
         users.rentals.timeStart = path.timeStart;
         users.rentals.timeEnd = path.timeEnd;

@@ -303,9 +303,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ParkDNDSwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = C4J9S7L9LJ;
+				DEVELOPMENT_TEAM = HB5WUW35LQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ParkDNDSwiftUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -325,9 +326,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ParkDNDSwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = C4J9S7L9LJ;
+				DEVELOPMENT_TEAM = HB5WUW35LQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ParkDNDSwiftUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

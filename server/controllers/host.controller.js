@@ -22,7 +22,7 @@ module.exports.createHost = async (req,res) => {
     const path = req.body;
     const email = req.query.email;
     try {
-        if(user.exists({'email': email})) {
+        if(user.exists({_id: id})) {
             const thisHost = new host({
                 liability : path.liability,
                 email : path.email
@@ -48,7 +48,7 @@ module.exports.editHost = async (req,res) => {
     const email = req.query.email
 
     try {
-        const thisHost = await host.findOne({'email': email});
+        const thisHost = await host.findOne({_id: id});
 
         thisHost.liability = path.liability
         thisHost.driveway = path.driveway
@@ -73,7 +73,7 @@ module.exports.deleteHost = async (req, res) => {
     const email = req.query.email;
 
     try {
-        const thisHost = await host.findOneAndDelete({'email': email});
+        const thisHost = await host.findOneAndDelete({_id: id});
         return res.status(200).json({
             success: true,
             message: 'host successfully deleted'
